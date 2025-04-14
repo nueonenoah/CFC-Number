@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-secondary mb-4">
+            <div class="card-header">
+                <h2 class="text-center">{{ translations.app_title }}</h2>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <h5>✨ {{ translations.features }}</h5>
+                    <ul>
+                        <li>{{ translations.feature_1 }}</li>
+                        <li>{{ translations.feature_2 }}</li>
+                        <li>{{ translations.feature_3 }}</li>
+                        <li>{{ translations.feature_4 }}</li>
+                        <li>{{ translations.feature_5 }}</li>
+                    </ul>
+                </div>
+
+                <form action="{{ url_for('process') }}" method="post" enctype="multipart/form-data" class="mt-4">
+                    <!-- Icon Selection -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">1. {{ translations.choose_icon }}</label>
+                        <div class="row row-cols-3 g-3 icon-selection">
+                            {% for num, data in icons.items() %}
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="icon" id="icon{{ num }}" value="{{ num }}" {% if loop.first %}checked{% endif %}>
+                                    <label class="form-check-label d-flex align-items-center" for="icon{{ num }}">
+                                        <div class="icon-box">{{ data.icon }}</div>
+                                        <span class="icon-name">{{ data.name }}</span>
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Link Format Selection -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">2. {{ translations.format_links }}</label>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="format" id="formatPlus" value="+" checked>
+                                    <label class="form-check-label" for="formatPlus">
+                                        <strong>+</strong> - {{ translations.format_plus }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="format" id="formatTme" value="t.me/+">
+                                    <label class="form-check-label" for="formatTme">
+                                        <strong>t.me/+</strong> - {{ translations.format_tme }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group Size Selection -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">3. {{ translations.group_size }}</label>
+                        <div class="row">
+                            <div class="col-3 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="group_size" id="size3" value="3">
+                                    <label class="form-check-label" for="size3">3</label>
+                                </div>
+                            </div>
+                            <div class="col-3 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="group_size" id="size6" value="6">
+                                    <label class="form-check-label" for="size6">6</label>
+                                </div>
+                            </div>
+                            <div class="col-3 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="group_size" id="size8" value="8" checked>
+                                    <label class="form-check-label" for="size8">8</label>
+                                </div>
+                            </div>
+                            <div class="col-3 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="group_size" id="size10" value="10">
+                                    <label class="form-check-label" for="size10">10</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div class="mb-4">
+                        <label for="file" class="form-label fw-bold">4. {{ translations.upload_file }}</label>
+                        <input type="file" class="form-control" id="file" name="file" accept=".txt" required>
+                        <div class="form-text">{{ translations.only_txt }}</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-cogs me-2"></i> {{ translations.process_file }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Instructions Card -->
+        <div class="card border-secondary">
+            <div class="card-header">
+                <h3>{{ translations.how_to_use }}</h3>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>{{ translations.step_1 }}</li>
+                    <li>{{ translations.step_2 }}</li>
+                    <li>{{ translations.step_3 }}</li>
+                    <li>{{ translations.step_4 }}</li>
+                    <li>{{ translations.step_5 }}</li>
+                    <li>{{ translations.step_6 }}</li>
+                </ol>
+                <div class="alert alert-secondary mt-3">
+                    <p class="mb-0"><i class="fas fa-lightbulb me-2"></i> {{ translations.file_tip }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
