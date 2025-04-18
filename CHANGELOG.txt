@@ -1,0 +1,81 @@
+# CFC Number CHANGELOG
+
+All notable changes to the CFC Number project will be documented in this file.
+
+## \[2.4\] - 2025-04-18
+
+### Changed
+
+- Reordered social links in the "Get to Know Me Better and Always Support Me" section: GitHub now appears above Telegram.
+- Updated the "About Me" label to use bold text with `Arial 10` font for improved visibility.
+- Added `@` prefix to GitHub link text (`GitHub: @nueonenoah`) for consistency with Telegram link.
+- Updated version number to `v2.4` in the application title and About dialog for consistency.
+- Adjusted About dialog to reflect new social link order (GitHub above Telegram).
+
+## \[2.3\] - 2025-04-18
+
+### Changed
+
+- Centered the layout of the "Get to Know Me Better and Always Support Me" section (Features and About Me) horizontally using a `center_frame` with `padx=50`, while keeping text left-aligned.
+- Increased padding between Features and About Me sub-frames (`padx=(0, 20)`) for better visual separation.
+
+## \[2.2\] - 2025-04-18
+
+### Changed
+
+- Moved the Features section from the top of the GUI (below Header) to the "6. Get to Know Me Better and Always Support Me" section, displayed side-by-side with About Me.
+- Combined Features and About Me under a single heading: "6. Get to Know Me Better and Always Support Me".
+- Reduced font size to `Arial 9` for Features and About Me text to fit the side-by-side layout.
+- Updated tooltip for the combined section to reflect both features and creator information.
+
+## \[2.1\] - 2025-04-18
+
+### Changed
+
+- Replaced the "6. Preview Output" section with "6. About Me", displaying creator information (Telegram: @nueonenoah, GitHub: nueonenoah) with clickable links and emoji icons (📱 for Telegram, 💻 for GitHub).
+- Removed preview-related code and variables (`preview_text`, `preview_content`) to address privacy concerns.
+- Updated About dialog to remove reference to preview feature and include creator contact details.
+- Added `webbrowser` module to enable clickable links in the About Me section.
+
+### Fixed
+
+- Corrected a typo in `proses_injeksi` function parameter (`format_pilir` to `format_pilihan`).
+
+## \[2.0\] - 2025-04-18
+
+### Added
+
+- Input validation:
+  - Checks if a file is selected before processing.
+  - Validates `.txt` file content using regex to ensure only alphanumeric strings, underscores, or hyphens are processed.
+- Custom output directory selection with a dedicated button and `pathlib.Path` for cross-platform compatibility.
+- Custom icon input field for user-defined emojis.
+- Tooltips for all major GUI elements (Header, Features, Icon, Format, etc.) to improve user guidance.
+- Preview Output section to display the first 10 lines of the processed file.
+- Batch processing support for multiple `.txt` files via `askopenfilenames`.
+- Cancel button to interrupt processing with a `cancel_process` flag.
+- Open Folder button to directly access the output directory, with cross-platform support (Windows, macOS, Linux).
+- Threading for `proses_injeksi` to keep the GUI responsive during processing.
+
+### Changed
+
+- Transitioned from a terminal-based interface to a full GUI using `tkinter` and `ttkthemes` (arc theme).
+- Optimized file reading to use streaming (`for line in f`) for better memory efficiency with large files.
+- Enhanced GUI layout with numbered sections (1. Choose Icon, 2. Format Links, etc.) and a modern color scheme.
+- Updated About dialog to reflect new features and GUI-based workflow.
+
+## \[1.0\] - \[Initial Release\]
+
+### Added
+
+- Initial terminal-based script for automating icon tagging on Telegram number lists.
+- Features included:
+  - Icon selection from a preset list (1–9).
+  - Importing links from a `.txt` file.
+  - Auto-splitting into groups of 8.
+  - Saving results with icon and date stamps.
+- Designed for simplicity and ease of use for Telegram contact or broadcast list management.
+
+---
+
+**Note**: This project has evolved significantly from a terminal-based script to a feature-rich GUI application. For the latest features and usage instructions, refer to the README.md.
